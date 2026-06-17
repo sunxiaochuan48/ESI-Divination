@@ -22,11 +22,11 @@
   --accent-deep: #001F70;
   --accent-wash: #e4e8f5;
   --accent-dim:  #3358A8;
+  --warm:    #f7f7fa;
+  --pad:     80px;
 }
 :root{--d-f:200ms;--d-m:500ms}
 @media(prefers-reduced-motion:no-preference){
-  @keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-  @keyframes drift{0%{transform:translate(0,0)}33%{transform:translate(30px,-20px)}66%{transform:translate(-20px,10px)}100%{transform:translate(0,0)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes counterIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
@@ -52,8 +52,8 @@ body{font-family:var(--font);font-size:16px;font-weight:400;line-height:1.8;colo
 /* ════════════════════════════════════════════════════════════
    NAV
    ════════════════════════════════════════════════════════════ */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;height:56px;padding:0 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background var(--d-f),box-shadow var(--d-f)}
-nav.scrolled{background:rgba(255,255,255,.85);box-shadow:0 1px 0 var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;height:56px;padding:0 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border);transition:background var(--d-f),box-shadow var(--d-f)}
+nav.scrolled{background:rgba(255,255,255,.85)}
 .nav-inner{width:100%;max-width:var(--max-w);display:flex;align-items:center;justify-content:space-between}
 .nav-brand{font-family:var(--font);font-size:16px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-.02em}
 .nav-brand span{color:var(--accent)}
@@ -65,13 +65,7 @@ nav.scrolled{background:rgba(255,255,255,.85);box-shadow:0 1px 0 var(--border)}
 /* ════════════════════════════════════════════════════════════
    HERO
    ════════════════════════════════════════════════════════════ */
-.hero{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
-.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--border) .5px,transparent .5px);background-size:28px 28px;opacity:.6;pointer-events:none}
-.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--accent-glow) 0%,color-mix(in oklch,var(--accent) 5%,transparent) 30%,transparent 70%);pointer-events:none}
-@media(prefers-reduced-motion:no-preference){.hero-glow{animation:breathe 6s ease-in-out infinite}}
-.hero-orb{position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid color-mix(in oklch,var(--accent) 6%,transparent);pointer-events:none;top:20%;right:8%}
-.hero-orb2{position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid color-mix(in oklch,var(--accent) 4%,transparent);pointer-events:none;bottom:12%;left:10%}
-@media(prefers-reduced-motion:no-preference){.hero-orb{animation:drift 20s ease-in-out infinite}.hero-orb2{animation:drift 25s ease-in-out infinite reverse}}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background:var(--surface)}
 .hero-content{position:relative;z-index:1;max-width:780px}
 .hero-eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:.15em;color:var(--accent);margin-bottom:20px}
 .hero-eyebrow span{color:var(--accent);font-weight:600}
@@ -98,6 +92,9 @@ nav.scrolled{background:rgba(255,255,255,.85);box-shadow:0 1px 0 var(--border)}
    ════════════════════════════════════════════════════════════ */
 section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items:center}
 .section-inner{width:100%;max-width:var(--max-w)}
+#products .section-inner {
+  max-width: 1200px;
+}
 
 .section-number{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;text-align:center}
 /* ── 标题字号 — 全页面级标题使用此尺寸，正文/文案请勿使用 ── */
@@ -105,29 +102,301 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 .section-lead{font-size:16px;color:var(--muted);text-align:center;max-width:620px;margin:0 auto var(--g-lg);line-height:1.75}
 
 /* ════════════════════════════════════════════════════════════
-   ABOUT — 严格叙述顺序
+   ABOUT — 双栏不对称叙事（如何使用 + 重要声明）
    ════════════════════════════════════════════════════════════ */
-.about-body{max-width:740px;margin:0 auto}
 
-.about-subtitle{font-family:var(--font);font-size:clamp(24px,3.2vw,34px);font-weight:700;line-height:1.25;letter-spacing:-.01em;color:var(--fg);text-align:center;margin-bottom:16px}
-
-.about-body p{font-size:16px;line-height:1.9;color:var(--fg);margin-bottom:18px}
-.about-body .tag{
-  display:inline-block;padding:0 10px;border-radius:var(--r-sm);
-  background:var(--accent-wash);color:var(--accent);font-size:13px;font-weight:600;
-  font-family:var(--font-mono);letter-spacing:.03em;
+/* ── Section container ── */
+#about {
+  padding: var(--pad) 48px;
+  background: var(--bg);
 }
-.about-body .hl{color:var(--accent);font-weight:600}
-.about-body .cmd-block{margin:16px 0;border-radius:var(--r-md);overflow:hidden;border:1px solid #e0e3e8;box-shadow:0 2px 8px rgba(0,0,0,.06);font-family:var(--font-mono);font-size:13.5px}
-.about-body .cmd-header{padding:8px 18px;background:#f4f5f7;color:#6a7080;font-size:12px;font-weight:500;text-align:center;letter-spacing:.03em;border-bottom:1px solid #e0e3e8}
-.about-body .cmd-body{padding:14px 18px;background:#ffffff;text-align:left;font-weight:600;color:#131418;line-height:1.7;overflow-x:auto}
-.about-body .cmd-block .prompt{color:#002FA7;margin-right:8px;user-select:none}
-.about-body .cmd-block .arg{color:#3358A8}
-.about-body .cmd-block .cursor{display:inline-block;width:3px;height:1.15em;background:#002FA7;vertical-align:middle;margin-left:2px;animation:blink .9s step-end infinite;border-radius:0}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.reasonix-inline{color:var(--accent);font-weight:600;text-decoration:none;transition:gap var(--d-f);display:inline-flex;align-items:center;gap:4px}
-.reasonix-inline:hover{gap:8px}
+.g-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 100px);
+}
 
+/* ── Title ── */
+.g-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.g-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* ── Body text ── */
+.g-body p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--fg);
+  margin-bottom: 14px;
+}
+
+/* ── Inline tag & highlight ── */
+.g-body .tag {
+  display: inline-block;
+  padding: 1px 8px;
+  background: var(--accent-wash);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+}
+.g-body .hl {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Terminal command block ── */
+.g-cmd {
+  margin: 16px 0;
+  border-radius: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.g-cmd-top {
+  padding: 6px 14px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--border);
+  background: var(--warm);
+}
+.g-cmd-body {
+  padding: 14px;
+  font-weight: 600;
+}
+.g-cmd-body .p {
+  color: var(--accent);
+}
+.g-cmd-body .a {
+  color: var(--accent-dim);
+}
+.g-cmd-body .c {
+  display: inline-block;
+  width: 6px;
+  height: 1.1em;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink .9s step-end infinite;
+}
+
+/* ── Responsive: single column ── */
+@media (max-width: 860px) {
+  .g-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ════════════════════════════════════════════════════════════
+   PHILOSOPHY — 三大核心支柱（三卡片 Grid）
+   ════════════════════════════════════════════════════════════ */
+#c {
+  padding: var(--pad) 48px;
+  background: var(--surface);
+}
+.c-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.c-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 16px;
+  text-align: center;
+}
+.c-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+.c-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+.c-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.c-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.c-card {
+  background: var(--surface);
+  padding: 40px 32px 36px;
+  position: relative;
+  transition: background .3s;
+}
+.c-card:hover {
+  background: var(--accent-wash);
+}
+.c-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 32px;
+  bottom: 32px;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.c-card:hover::before {
+  opacity: 1;
+}
+.c-card-letter {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 12px;
+  transition: color .3s;
+}
+.c-card:hover .c-card-letter {
+  color: var(--accent-wash);
+}
+.c-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -.01em;
+}
+.c-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 860px) {
+  .c-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Pipeline (嵌入 Philosophy 页内) ── */
+.pipeline-divider {
+  width: 36px;
+  height: 2px;
+  background: var(--border);
+  margin: 80px auto 40px;
+}
+.pipeline-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 480px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pipeline-divider + .c-label {
+  text-align: center;
+}
+.pipeline-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-height: 120px;
+}
+.pipeline-node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 20px;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all .3s;
+}
+.pipeline-node:hover {
+  border-color: var(--accent);
+  z-index: 1;
+}
+.pipeline-node::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 2;
+}
+.pipeline-node:last-child::after {
+  display: none;
+}
+.pipeline-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pipeline-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fg);
+}
+.pipeline-en {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+@media (max-width: 860px) {
+  .pipeline-flow {
+    flex-direction: column;
+  }
+  .pipeline-node::after {
+    right: 50%;
+    top: auto;
+    bottom: -8px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+}
 
 /* ════════════════════════════════════════════════════════════
    PILLARS
@@ -154,16 +423,39 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 .product-selector{text-align:center;margin-bottom:32px}
 
 /* 产品线选择 */
-.line-tabs{display:flex;justify-content:center;gap:4px;margin-bottom:24px;background:var(--bg);padding:4px;border-radius:var(--r-pill);width:fit-content;margin-left:auto;margin-right:auto}
-.line-tab{padding:8px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all var(--d-f);font-family:var(--font)}
-.line-tab:hover{color:var(--fg)}
-.line-tab.active{background:var(--surface);color:var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.line-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+}
+.line-tab {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: var(--warm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+  border-bottom: 2px solid var(--border);
+  transition: all .25s;
+  font-family: var(--font);
+  text-align: left;
+}
+.line-tab:hover {
+  color: var(--fg);
+}
+.line-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--surface);
+}
 
 /* 版本 tabs */
-.ver-tabs{display:flex;justify-content:center;gap:4px;margin-bottom:24px;background:var(--bg);padding:4px;border-radius:var(--r-pill);width:fit-content;margin-left:auto;margin-right:auto}
-.ver-tab{padding:8px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all var(--d-f);font-family:var(--font)}
+.ver-tabs{display:flex;gap:0;margin-bottom:24px}
+.ver-tab{flex:1;padding:12px 20px;border:none;background:var(--warm);font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:2px solid var(--border);transition:all .25s;font-family:var(--font);text-align:left}
 .ver-tab:hover{color:var(--fg)}
-.ver-tab.active{background:var(--surface);color:var(--accent);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.ver-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--surface)}
 
 /* 详情面板 */
 .prod-detail-wrap{
@@ -203,6 +495,8 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 .pp-dl:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,47,167,.2)}
 
 @media(max-width:640px){
+  .line-tabs{flex-direction:column}
+  .ver-tabs{flex-direction:column}
   .pp-stats-grid{grid-template-columns:repeat(2,1fr)}
   .pp-chart{height:120px}
 }
@@ -235,13 +529,12 @@ footer p{font-size:14px;line-height:1.7}
 @media(max-width:640px){
   section{padding:64px 20px}
   .hero{padding:100px 20px 60px;min-height:auto}
-  .hero-orb,.hero-orb2{display:none}
   .pillar{padding:24px 20px}
   .prod-panel{padding:28px 20px}
 }
 
 @media print{
-  nav,.hero-glow,.hero-orb,.hero-orb2{display:none}
+  nav{display:none}
   body{background:#fff;color:#000;font-size:13px}
   section{padding:24px 0;break-inside:avoid}
   a{color:#000;text-decoration:underline}
@@ -274,9 +567,6 @@ footer p{font-size:14px;line-height:1.7}
      HERO
      ════════════════════════════════════════════════════════════ -->
 <section id="hero" class="hero" data-od-id="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-orb" aria-hidden="true"></div>
-  <div class="hero-orb2" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Empirical · Systematic · Iterative</p>
     <h1 class="hero-title">ESI-LIUYAO</h1>
@@ -292,41 +582,126 @@ footer p{font-size:14px;line-height:1.7}
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     ABOUT — 严格叙述顺序
+     ABOUT — 双栏不对称叙事（如何使用 + 重要声明）
      ════════════════════════════════════════════════════════════ -->
 <section id="about" data-od-id="about">
-  <div class="section-inner">
-    <p class="section-number">01 / 关于</p>
-    <h2 class="section-title">关于这个项目</h2>
+  <div class="g-inner">
 
-    <div class="about-body reveal" style="animation-delay:.1s">
-      <p>这是基于 <span class="hl">Reasonix</span> 进行制作的 Skill 项目，目的是以 AI 进行中国传统术数的实用性探究。如果您想使用它，在 <span class="tag">Reasonix-v1.3+</span> 以上的版本运行最为稳妥。</p>
-
-      <p><a href="#" class="reasonix-inline"><strong>Reasonix 官网入口 →</strong></a></p>
-      <p>如果您需要在 <span class="hl">Claude Code</span> 等其他平台上使用，可向 AI 发送指令，并附带一份 <span class="tag">esi-liuyao</span> 文件，它会自动调整内容适应到当前平台。</p>
-      <h4 style="font-size:clamp(28px,4vw,38px);font-weight:700;color:var(--fg);margin-top:72px;margin-bottom:16px;line-height:1.25;letter-spacing:-.01em;text-align:center">如何使用</h4>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">这是一个 <span class="hl">六爻 Skill</span> ，顾名思义，它可以做到从起卦到解读全过程。</p>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">使用时，只需要在任意 Ai 中输入以下内容即可</p>
-      <div class="cmd-block">
-        <div class="cmd-header">~/app — ai chat</div>
-        <div class="cmd-body"><span class="prompt">$</span> run skill esi-liuyao <span class="arg">+ 问题</span> <span class="arg">+ 事件背景</span><span class="cursor"></span></div>
+    <!-- 左栏：如何使用 -->
+    <div class="reveal">
+      <h2 class="g-title">如何<em>使用</em></h2>
+      <div class="g-body">
+        <p>这是基于 <span class="hl">Reasonix</span> 制作的 Skill，建议 <span class="tag">Reasonix-v1.3+</span> 以上版本。</p>
+        <p>如需在 <span class="hl">Claude Code</span> 等平台使用，发送指令附 <span class="tag">esi-liuyao</span> 文件即可适配。</p>
+        <div class="g-cmd">
+          <div class="g-cmd-top">~/app — ai chat</div>
+          <div class="g-cmd-body">
+            <span class="p">$</span> run skill esi-liuyao
+            <span class="a">+ 问题</span>
+            <span class="a">+ 事件背景</span>
+            <span class="c"></span>
+          </div>
+        </div>
+        <p>背景越详尽越好。回溯过去可附时间如 <span class="tag">2022年2月22日22时22分</span>。</p>
       </div>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">关于背景，我们建议越详细越好，这会辅助它更快、更好的取象。</p>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">如果需要求问一件过去的事情，最好附带一串事情最初发生的时间，例如 <span class="tag">2022年2月22日22时22分</span> ，这对判断有益。但如果你已经忘记了时间，也请不要勉强。</p>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">它会针对你的问题、卦象，给出合理的解读。虽然这在统计上拥有一定的正确率，但我们仍<span class="hl">不建议</span>用它来做<span class="hl">任何决策与参考</span>。这是对我们的保护，也是由衷建议，我们无法对它的判断与解读负责，这部分需要由你个人承担。</p>
     </div>
 
-    <div class="about-body reveal" style="animation-delay:.2s;margin-top:72px">
-      <h4 style="font-size:clamp(28px,4vw,38px);font-weight:700;color:var(--fg);margin-top:0;margin-bottom:16px;line-height:1.25;letter-spacing:-.01em;text-align:center">如何确保有效</h4>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">我们拥有一整套训练系统，涵盖出题、解读、评分、记录等环节。在最初的版本中，它取得了69%的正确率，但这只能说明，它在部分场景上拥有一定的效果展现，这需要客观辩证的看待。</p>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">但更重要的，是我们的三大核心：<span class="hl">实证、系统、迭代</span>。</p>
-      <p style="font-size:16px;line-height:1.9;color:var(--fg)">主张实证，保持诚实，以实践为证，从实践中获取经验与知识。我们不止制作Skill，在未来这个项目会长期开展，不断更新。敢于用数据丈量自身，不陷入模糊的正确中，是我们相较同类型Skill最大的优势。</p>
-
-      <h3 class="about-subtitle" style="margin-top:72px">我们不提供迷信</h3>
-      <p>我们不提供<span class="hl">迷信服务</span>，也不会在此深耕探索。简单说，我们需要探究的是，符号经过排列组合后，最终能否真实、准确的反映现实。六爻这门术数，则是在权衡之下选择的载体。</p>
-      <p>在使用过程中，我们通常会看到一些难以理解的词汇。这本质是包含巨量信息的符号，一切的解读都是建立在一个又一个的符号之上。这并非神秘化，而是<span class="hl">形式上的必须</span>，抛去这一点，整套体系将无法运行。</p>
-      <p>我们会尽可能的去除神秘化元素，把东西摊开讲实。以及，杜绝巴纳姆效应的使用，让它成为指南针一样的存在，不一定正确，也绝不宽泛。即便指向错误，也无非是重新调整。</p>
+    <!-- 右栏：重要声明 -->
+    <div class="reveal" style="animation-delay:.15s">
+      <h2 class="g-title">重要<em>声明</em></h2>
+      <div class="g-body">
+        <p>统计上有一定正确率，但我们<span class="hl">不建议</span>以此做<span class="hl">任何决策</span>。</p>
+        <p>我们不提供<span class="hl">迷信服务</span>。探究的是：符号排列组合后能否真实反映现实。</p>
+        <p>解读中难懂的词汇是包含巨量信息的符号——形式上的必须。我们去除神秘化，杜绝巴纳姆效应。不一定正确，也绝不宽泛。</p>
+      </div>
     </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PHILOSOPHY — 三大核心支柱
+     ════════════════════════════════════════════════════════════ -->
+<section id="c" data-od-id="philosophy">
+  <div class="c-inner">
+
+    <!-- 标题区 -->
+    <div class="c-head">
+      <div>
+        <div class="c-label">Philosophy</div>
+        <h2 class="c-title">三大<em>核心</em>支柱</h2>
+      </div>
+    </div>
+
+    <!-- 三卡片 Grid -->
+    <div class="c-cards">
+
+      <!-- 卡片 1 -->
+      <div class="c-card reveal">
+        <div class="c-card-letter">01</div>
+        <h3>Emperical · 实证</h3>
+        <p>实践为证，每一条论断都经过评分验证。不做模糊正确的预测，只交付可度量的结果。</p>
+      </div>
+
+      <!-- 卡片 2 -->
+      <div class="c-card reveal" style="animation-delay:.1s">
+        <div class="c-card-letter">02</div>
+        <h3>Systematic · 系统</h3>
+        <p>覆盖出题、解读、评分、记录全流程。符号排列组合后，系统性逼近真实世界的答案。</p>
+      </div>
+
+      <!-- 卡片 3 -->
+      <div class="c-card reveal" style="animation-delay:.2s">
+        <div class="c-card-letter">03</div>
+        <h3>Iterative · 迭代</h3>
+        <p>不满足于单一版本的稳定。每个版本都是下一次的起点，在反馈循环中持续进化。</p>
+      </div>
+
+    </div>
+
+    <!-- 训练反馈循环 -->
+    <div class="pipeline-divider"></div>
+    <div class="c-label">Pipeline</div>
+    <h2 class="c-title" style="margin-bottom:4px;">训练<em>反馈</em>循环</h2>
+    <p class="pipeline-desc">从问题到答案，五次接力完成一次完整的训练闭环。</p>
+    <div class="pipeline-flow reveal" style="animation-delay:.2s">
+      <div class="pipeline-node">
+        <div class="pipeline-num">1</div>
+        <div>
+          <div class="pipeline-name">问题输入</div>
+          <div class="pipeline-en">Input</div>
+        </div>
+      </div>
+      <div class="pipeline-node">
+        <div class="pipeline-num">2</div>
+        <div>
+          <div class="pipeline-name">起卦排盘</div>
+          <div class="pipeline-en">Cast</div>
+        </div>
+      </div>
+      <div class="pipeline-node">
+        <div class="pipeline-num">3</div>
+        <div>
+          <div class="pipeline-name">裁定解读</div>
+          <div class="pipeline-en">Judge</div>
+        </div>
+      </div>
+      <div class="pipeline-node">
+        <div class="pipeline-num">4</div>
+        <div>
+          <div class="pipeline-name">评分归档</div>
+          <div class="pipeline-en">Score</div>
+        </div>
+      </div>
+      <div class="pipeline-node">
+        <div class="pipeline-num">5</div>
+        <div>
+          <div class="pipeline-name">反馈训练</div>
+          <div class="pipeline-en">Learn</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
