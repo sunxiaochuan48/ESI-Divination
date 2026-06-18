@@ -34,8 +34,8 @@
 @media(prefers-reduced-motion:reduce){:root{--d-f:0ms;--d-m:0ms}}
 
 :root{
-  --font:'Microsoft YaHei','PingFang SC','Hiragino Sans GB','Noto Sans SC',-apple-system,sans-serif;
-  --font-mono:ui-monospace,'SF Mono','Cascadia Code','Consolas',monospace;
+  --font:'Noto Sans SC',-apple-system,sans-serif;
+  --font-mono:'Noto Sans SC',-apple-system,sans-serif;
   --r-sm:0;--r-md:0;--r-lg:0;--r-pill:0;
   --g-xs:8px;--g-sm:16px;--g-md:24px;--g-lg:40px;--g-xl:64px;--g-2xl:96px;--g-3xl:120px;
   --max-w:960px;
@@ -69,7 +69,7 @@ nav.scrolled{background:rgba(255,255,255,.85)}
 .hero-content{position:relative;z-index:1;max-width:780px}
 .hero-eyebrow{font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:.15em;color:var(--accent);margin-bottom:20px}
 .hero-eyebrow span{color:var(--accent);font-weight:600}
-.hero-title{font-family:var(--font);font-size:clamp(52px,10vw,100px);font-weight:700;line-height:1.08;letter-spacing:-.02em;background:linear-gradient(135deg,var(--fg) 0%,var(--fg) 40%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.hero-title{font-family:var(--font);font-size:clamp(52px,10vw,100px);font-weight:900;line-height:1.08;letter-spacing:-.02em;background:linear-gradient(135deg,var(--fg) 0%,var(--fg) 40%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
 .hero-sub{font-size:clamp(12px,1.3vw,14px);color:var(--muted);line-height:1.8;max-width:600px;margin:0 auto 32px}
 .hero-sub strong{color:var(--fg);font-weight:600}
 .hero-cta{display:inline-flex;align-items:center;gap:6px;padding:14px 36px;border-radius:var(--r-pill);background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:background var(--d-f),transform var(--d-f),box-shadow var(--d-f)}
@@ -453,6 +453,8 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 /* 版本 tabs */
 .ver-tabs{display:flex;gap:0;margin-bottom:24px}
+.ver-tabs.animate{animation:verSlideDown .35s ease-out}
+@keyframes verSlideDown{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .ver-tab{flex:1;padding:12px 20px;border:none;background:var(--warm);font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:2px solid var(--border);transition:all .25s;font-family:var(--font);text-align:left}
 .ver-tab:hover{color:var(--fg)}
 .ver-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--surface)}
@@ -493,6 +495,22 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 .pp-dl{display:inline-flex;align-items:center;gap:6px;margin-top:24px;padding:10px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:600;text-decoration:none;background:var(--accent);color:#fff;transition:background var(--d-f),transform var(--d-f)}
 .pp-dl:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,47,167,.2)}
+
+/* 版本要点卡片 */
+.points-panel{
+  background:var(--surface);padding:36px 32px;box-shadow:0 1px 0 var(--border)
+}
+.points-header{
+  font-size:26px;font-weight:700;color:var(--fg);margin-bottom:20px;text-align:center
+}
+.points-item{
+  display:flex;gap:10px;padding:10px 0;font-size:15px;line-height:1.7;border-bottom:1px solid var(--border);justify-content:center
+}
+.points-item:last-child{border-bottom:none}
+.points-num{
+  font-family:var(--font-mono);color:var(--accent);font-weight:600;flex-shrink:0;min-width:24px
+}
+.points-text{color:var(--muted)}
 
 @media(max-width:640px){
   .line-tabs{flex-direction:column}
@@ -730,6 +748,7 @@ footer p{font-size:14px;line-height:1.7}
 
     <div class="reveal" style="animation-delay:.2s;text-align:center;margin-top:32px;font-size:15px;color:var(--muted);line-height:1.7;" id="prodNote">
     </div>
+    <div style="margin-top:32px;" id="pointsWrap"></div>
   </div>
 </section>
 
@@ -774,18 +793,21 @@ var VERSIONS = {
         name:'esi-liuyao-v1.0',line:'Stone tool-V1 石器',
         tCount:50,
         stats:{acc:'69%',train:'50次'},
+        judge:'169/136/57',
         anchors:[[1,85],[2,100],[3,87],[4,69],[5,69],[6,54],[7,68],[8,93],[9,90],[10,93],[11,37],[12,81],[13,94],[14,49],[15,67],[16,40],[17,74],[18,69],[19,93],[20,71],[21,80],[22,55],[23,87],[24,74],[25,71],[26,90],[27,95],[28,67],[29,63],[30,87],[31,9],[32,90],[33,23],[34,73],[35,54],[36,30],[37,89],[38,50],[39,64],[40,27],[41,76],[42,70],[43,53],[44,44],[45,80],[46,70],[47,87],[48,80],[49,76],[50,73]],
         dl:'获取当前 Skill',
-        note:'这是 <strong>v1.0</strong>——最初的版本。69% 的参考正确率远非终点，它是基准线。每一次训练、每一次反馈，都在推动它变得更好。'
+        note:'这是 <strong>v1.0</strong>——最初的版本。69% 的参考正确率远非终点，它是基准线。每一次训练、每一次反馈，都在推动它变得更好。',
+        points:['构建50次训练样本的基础卦例库','参考正确率达69%，验证框架可行性','确立实证、系统、迭代三大核心支柱','裁定引擎v1.0完成验收并稳定运行']
       },
       {
         id:'v1_1',label:'v1.1',featured:false,
         name:'esi-liuyao-v1.1',line:'Stone tool-V1 石器',
         tCount:30,
         stats:{acc:'—','train':'—'},
-        anchors:[[2,82],[7,78],[12,85],[17,72],[22,76],[27,80]],
-        dl:'即将发布',
-        note:'<strong>v1.1</strong> 正在迭代中。优化裁定算法与用神库扩展，进一步提升框架可靠性。'
+        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0]],
+        dl:'敬请期待',
+        note:'<strong>v1.1</strong> 尚未推出，敬请期待。',
+        points:['无']
       },
     ]
   },
@@ -796,19 +818,22 @@ var VERSIONS = {
         id:'v2_0',label:'v2.0',featured:true,
         name:'esi-liuyao-v2.0',line:'Mechanism-V2 机关',
         tCount:80,
-        stats:{acc:'72%',train:'120次'},
-        anchors:[[5,75],[12,82],[20,78],[28,85],[35,72],[42,80],[50,76],[58,84],[65,79],[72,74]],
-        dl:'获取最新版本',
-        note:'<strong>v2.0</strong> 是 Mechanism-V2 系列的首个版本。重构了裁定引擎，参考正确率提升至 72%。'
+        stats:{acc:'—',train:'—'},
+        judge:'—',
+        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0],[51,0],[52,0],[53,0],[54,0],[55,0],[56,0],[57,0],[58,0],[59,0],[60,0],[61,0],[62,0],[63,0],[64,0],[65,0],[66,0],[67,0],[68,0],[69,0],[70,0],[71,0],[72,0],[73,0],[74,0],[75,0],[76,0],[77,0],[78,0],[79,0],[80,0]],
+        dl:'敬请期待',
+        note:'<strong>v2.0</strong> 尚未推出，敬请期待。',
+        points:['无']
       },
       {
         id:'v2_1',label:'v2.1',featured:false,
         name:'esi-liuyao-v2.1',line:'Mechanism-V2 机关',
         tCount:40,
         stats:{acc:'—','train':'—'},
-        anchors:[[3,72],[10,78],[18,73],[26,80],[33,76]],
-        dl:'即将发布',
-        note:'<strong>v2.1</strong> 预览版。引入案例库匹配与多模型交叉验证，让预测依据更加扎实。'
+        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0]],
+        dl:'敬请期待',
+        note:'<strong>v2.1</strong> 尚未推出，敬请期待。',
+        points:['无']
       },
     ]
   },
@@ -819,19 +844,22 @@ var VERSIONS = {
         id:'v3_0',label:'v3.0',featured:true,
         name:'esi-liuyao-v3.0',line:'Pre-made meal-V3 预制菜',
         tCount:100,
-        stats:{acc:'75%',train:'200次'},
-        anchors:[[10,70],[25,78],[40,74],[55,82],[70,76],[85,80],[100,78]],
-        dl:'获取最新版本',
-        note:'<strong>v3.0</strong> 是 Pre-made meal-V3 系列的首个版本。标准化卦例库与自动化训练管线，参考正确率提升至 75%。'
+        stats:{acc:'—',train:'—'},
+        judge:'—',
+        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0],[51,0],[52,0],[53,0],[54,0],[55,0],[56,0],[57,0],[58,0],[59,0],[60,0],[61,0],[62,0],[63,0],[64,0],[65,0],[66,0],[67,0],[68,0],[69,0],[70,0],[71,0],[72,0],[73,0],[74,0],[75,0],[76,0],[77,0],[78,0],[79,0],[80,0],[81,0],[82,0],[83,0],[84,0],[85,0],[86,0],[87,0],[88,0],[89,0],[90,0],[91,0],[92,0],[93,0],[94,0],[95,0],[96,0],[97,0],[98,0],[99,0],[100,0]],
+        dl:'敬请期待',
+        note:'<strong>v3.0</strong> 尚未推出，敬请期待。',
+        points:['无']
       },
       {
         id:'v3_1',label:'v3.1',featured:false,
         name:'esi-liuyao-v3.1',line:'Pre-made meal-V3 预制菜',
         tCount:60,
         stats:{acc:'—','train':'—'},
-        anchors:[[8,74],[20,80],[32,77],[44,83],[56,79]],
-        dl:'即将发布',
-        note:'<strong>v3.1</strong> 预览版。预制案例库持续扩充，支持批量回溯训练，进一步降低人工标注成本。'
+        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0],[31,0],[32,0],[33,0],[34,0],[35,0],[36,0],[37,0],[38,0],[39,0],[40,0],[41,0],[42,0],[43,0],[44,0],[45,0],[46,0],[47,0],[48,0],[49,0],[50,0],[51,0],[52,0],[53,0],[54,0],[55,0],[56,0],[57,0],[58,0],[59,0],[60,0]],
+        dl:'敬请期待',
+        note:'<strong>v3.1</strong> 尚未推出，敬请期待。',
+        points:['无']
       },
     ]
   }
@@ -854,6 +882,8 @@ var VERSIONS = {
     }).join('');
     currentVer = line.versions[0].id;
     renderDetail(lineKey, currentVer);
+    verTabs.classList.remove('animate');
+    requestAnimationFrame(function(){verTabs.classList.add('animate')});
   }
 
   function renderDetail(lineKey, verId){
@@ -947,12 +977,24 @@ var VERSIONS = {
       +'<div class="pp-stats-grid">'
       +'<div class="pp-stat"><div class="pp-stat-val">'+ver.stats.acc+'</div><div class="pp-stat-label">参考正确率</div></div>'
       +'<div class="pp-stat"><div class="pp-stat-val">'+ver.stats.train+'</div><div class="pp-stat-label">累计训练</div></div>'
-      +'<div class="pp-stat"><div class="pp-stat-val">'+line.versions.length+'</div><div class="pp-stat-label">版本迭代</div></div>'
+      +'<div class="pp-stat"><div class="pp-stat-val">'+(ver.judge || '—')+'</div><div class="pp-stat-label">判断点（正确/擦边/错误）</div></div>'
       +'</div>'
       +chartHtml
-      +'<a href="#" class="pp-dl">'+ver.dl+'</a>'
+      +'<a href="'+(ver.dl === '敬请期待' ? 'javascript:void(0)' : '#')+'" class="pp-dl">'+ver.dl+'</a>'
       +'</div>';
     prodNote.innerHTML = ver.note;
+    // 渲染版本要点
+    var pointsHtml = '<div class="points-panel">'
+      + '<div class="points-header">版本要点</div>'
+      + '<div class="points-list">';
+    (ver.points || ['无']).forEach(function(p,i){
+      pointsHtml += '<div class="points-item">'
+        + '<span class="points-num">'+(i+1)+'.</span>'
+        + '<span class="points-text">'+p+'</span>'
+        + '</div>';
+    });
+    pointsHtml += '</div></div>';
+    document.getElementById('pointsWrap').innerHTML = pointsHtml;
   }
 
   // line tab click
