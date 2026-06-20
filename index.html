@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>ESI-LIUYAO — 理性六爻预测框架</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#ffffff',primaryTextColor:'#002FA7',primaryBorderColor:'#002FA7',lineColor:'#002FA7',fontFamily:'"Noto Sans SC",sans-serif',fontSize:'15px',primaryBorderWidth:3}})</script>
 <style>
 /* =============================================================
     ESI-LIUYAO Landing v3
@@ -52,10 +54,10 @@ body{font-family:var(--font);font-size:16px;font-weight:400;line-height:1.8;colo
 /* ════════════════════════════════════════════════════════════
    NAV
    ════════════════════════════════════════════════════════════ */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;height:56px;padding:0 24px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border);transition:background var(--d-f),box-shadow var(--d-f)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;height:56px;padding:0 48px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border);transition:background var(--d-f),box-shadow var(--d-f)}
 nav.scrolled{background:rgba(255,255,255,.85)}
-.nav-inner{width:100%;max-width:var(--max-w);display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:var(--font);font-size:16px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-.02em}
+.nav-inner{width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font);font-size:16px;font-weight:900;color:var(--fg);text-decoration:none;letter-spacing:-.02em}
 .nav-brand span{color:var(--accent)}
 .nav-links{display:flex;gap:24px;list-style:none}
 .nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color var(--d-f)}
@@ -76,7 +78,7 @@ nav.scrolled{background:rgba(255,255,255,.85)}
 .hero-cta:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,47,167,.25)}
 .hero-stats{display:flex;justify-content:center;gap:clamp(24px,5vw,64px);margin-top:32px;margin-bottom:40px;flex-wrap:wrap}
 .hstat{text-align:center}
-.hstat-num{font-family:var(--font);font-size:clamp(36px,5vw,52px);font-weight:700;line-height:1;color:var(--fg)}
+.hstat-num{font-family:var(--font);font-size:clamp(36px,5vw,52px);font-weight:900;line-height:1;color:var(--fg)}
 .hstat-num span{color:var(--accent)}
 .hstat-label{font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
 .hstat-acc{display:flex;align-items:center;gap:16px;min-width:180px}
@@ -98,7 +100,7 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 .section-number{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--accent);margin-bottom:12px;text-align:center}
 /* ── 标题字号 — 全页面级标题使用此尺寸，正文/文案请勿使用 ── */
-.section-title{font-family:var(--font);font-size:clamp(28px,4vw,38px);font-weight:700;line-height:1.25;letter-spacing:-.01em;color:var(--fg);margin-bottom:16px;text-align:center}
+.section-title{font-family:var(--font);font-size:clamp(32px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--fg);margin-bottom:16px;text-align:center}
 .section-lead{font-size:16px;color:var(--muted);text-align:center;max-width:620px;margin:0 auto var(--g-lg);line-height:1.75}
 
 /* ════════════════════════════════════════════════════════════
@@ -134,9 +136,9 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 /* ── Body text ── */
 .g-body p {
   font-size: 15px;
-  line-height: 1.9;
+  line-height: 1.5;
   color: var(--fg);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 /* ── Inline tag & highlight ── */
@@ -146,7 +148,7 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
   background: var(--accent-wash);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
 }
 .g-body .hl {
@@ -203,6 +205,10 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 /* ════════════════════════════════════════════════════════════
    PHILOSOPHY — 三大核心支柱（三卡片 Grid）
+   ════════════════════════════════════════════════════════════ */
+	   
+/* ════════════════════════════════════════════════════════════
+   PHILOSOPHY — 三大核心支柱
    ════════════════════════════════════════════════════════════ */
 #c {
   padding: var(--pad) 48px;
@@ -281,7 +287,7 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
   transition: color .3s;
 }
 .c-card:hover .c-card-letter {
-  color: var(--accent-wash);
+  color: #fff;
 }
 .c-card h3 {
   font-size: 22px;
@@ -301,13 +307,7 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
   }
 }
 
-/* ── Pipeline (嵌入 Philosophy 页内) ── */
-.pipeline-divider {
-  width: 36px;
-  height: 2px;
-  background: var(--border);
-  margin: 80px auto 40px;
-}
+/* ── Pipeline ── */
 .pipeline-desc {
   font-size: 15px;
   color: var(--muted);
@@ -317,9 +317,6 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-}
-.pipeline-divider + .c-label {
-  text-align: center;
 }
 .pipeline-flow {
   display: flex;
@@ -398,6 +395,23 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
   }
 }
 
+/* ── Mermaid flowchart ── */
+.mermaid .node :where(text, tspan, .label, .nodeLabel, span) {
+  font-weight: 700 !important;
+}
+.mermaid .node:hover :where(rect, .label-container) {
+  fill: #002FA7 !important;
+  stroke: #ffffff !important;
+  stroke-width: 3px !important;
+  transition: fill .2s, stroke .2s, stroke-width .2s;
+}
+.mermaid .node:hover :where(text, tspan, .label, .nodeLabel, span) {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  transition: fill .2s, color .2s, font-weight .2s;
+}
+
 /* ════════════════════════════════════════════════════════════
    PILLARS
    ════════════════════════════════════════════════════════════ */
@@ -453,8 +467,8 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 /* 版本 tabs */
 .ver-tabs{display:flex;gap:0;margin-bottom:24px}
-.ver-tabs.animate{animation:verSlideDown .35s ease-out}
-@keyframes verSlideDown{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.ver-tabs.animate{animation:verSlideDown 1s ease-out}
+@keyframes verSlideDown{from{opacity:0}to{opacity:1}}
 .ver-tab{flex:1;padding:12px 20px;border:none;background:var(--warm);font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);border-bottom:2px solid var(--border);transition:all .25s;font-family:var(--font);text-align:left}
 .ver-tab:hover{color:var(--fg)}
 .ver-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--surface)}
@@ -498,18 +512,20 @@ section{padding:var(--g-3xl) 24px;display:flex;flex-direction:column;align-items
 
 /* 版本要点卡片 */
 .points-panel{
-  background:var(--surface);padding:36px 32px;box-shadow:0 1px 0 var(--border)
+  background:var(--surface);padding:0 32px 36px;box-shadow:0 1px 0 var(--border)
 }
 .points-header{
-  font-size:26px;font-weight:700;color:var(--fg);margin-bottom:20px;text-align:center
+  font-size:26px;font-weight:700;color:var(--fg);text-align:center;
+  padding:16px 32px;margin:0 -32px 20px;border-bottom:1px solid var(--border);
+  line-height:1.2
+}
+.points-list{
+  max-height:200px;overflow-y:auto;margin:0 -32px
 }
 .points-item{
-  display:flex;gap:10px;padding:10px 0;font-size:15px;line-height:1.7;border-bottom:1px solid var(--border);justify-content:center
+  display:flex;gap:10px;padding:10px 32px;font-size:15px;line-height:1.7;border-bottom:1px solid var(--border);justify-content:center
 }
 .points-item:last-child{border-bottom:none}
-.points-num{
-  font-family:var(--font-mono);color:var(--accent);font-weight:600;flex-shrink:0;min-width:24px
-}
 .points-text{color:var(--muted)}
 
 @media(max-width:640px){
@@ -575,6 +591,7 @@ footer p{font-size:14px;line-height:1.7}
     <ul class="nav-links">
       <li><a href="#hero">HERO</a></li>
       <li><a href="#about">关于</a></li>
+      <li><a href="#c">理念</a></li>
       <li><a href="#products">版本</a></li>
       <li><a href="#sponsor">赞助</a></li>
     </ul>
@@ -591,9 +608,9 @@ footer p{font-size:14px;line-height:1.7}
     <p style="font-size:24px;color:var(--muted);margin-bottom:8px;font-weight:400;letter-spacing:.05em">基于 <span style="color:var(--accent);font-weight:600">Reasonix</span> 的 Skill 项目</p>
     <p class="hero-sub">一个基于训练反馈循环的理性六爻预测框架。<br>不靠话术，不凭直觉——用数据迭代逼近准确。</p>
     <div class="hero-stats">
-      <div class="hstat hstat-acc"><div class="hstat-num"><span data-n="69" data-s="%">69%</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Accuracy rate</div><div class="hstat-acc-label-cn">参考正确率</div></div></div>
-      <div class="hstat hstat-acc"><div class="hstat-num"><span data-n="1">1</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Iterations</div><div class="hstat-acc-label-cn">迭代次数</div></div></div>
-      <div class="hstat hstat-acc"><div class="hstat-num"><span data-n="50">50</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Training count</div><div class="hstat-acc-label-cn">累计训练次数</div></div></div>
+      <div class="hstat hstat-acc"><div class="hstat-num"><span data-n="72.6" data-s="%">72.6%</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Accuracy rate</div><div class="hstat-acc-label-cn">参考正确率</div></div></div>
+      <div class="hstat hstat-acc"><div class="hstat-num"><span data-n="2">2</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Iterations</div><div class="hstat-acc-label-cn">迭代次数</div></div></div>
+      <div class="hstat hstat-acc"><div class="hstat-num"><span>V1.1</span></div><div class="hstat-acc-labels"><div class="hstat-acc-label">Version</div><div class="hstat-acc-label-cn">版本号</div></div></div>
     </div>
     <a href="#products" class="hero-cta">Download →</a>
   </div>
@@ -609,8 +626,9 @@ footer p{font-size:14px;line-height:1.7}
     <div class="reveal">
       <h2 class="g-title">如何<em>使用</em></h2>
       <div class="g-body">
-        <p>这是基于 <span class="hl">Reasonix</span> 制作的 Skill，建议 <span class="tag">Reasonix-v1.3+</span> 以上版本。</p>
-        <p>如需在 <span class="hl">Claude Code</span> 等平台使用，发送指令附 <span class="tag">esi-liuyao</span> 文件即可适配。</p>
+        <p>这是基于 <span class="hl">Reasonix</span> 制作的 Skill，若在其他平台上使用可能出现兼容性问题。可以尝试附带文件并发送指令，对内容进行针对平台的的适应性修改。</p>
+        <p><a href="https://reasonix.io" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:var(--accent);text-decoration:none">Reasonix官网入口←</a></p>
+        <p>使用时只需发送如下指令即可：</p>
         <div class="g-cmd">
           <div class="g-cmd-top">~/app — ai chat</div>
           <div class="g-cmd-body">
@@ -620,7 +638,7 @@ footer p{font-size:14px;line-height:1.7}
             <span class="c"></span>
           </div>
         </div>
-        <p>背景越详尽越好。回溯过去可附时间如 <span class="tag">2022年2月22日22时22分</span>。</p>
+        <p>关于背景，我们建议越详细越好，这能够带来更好的解读效果与准确性。起卦时间默认为当下，如需要求问过去的事情，最好附带当时时间，如 <span class="hl">2022年2月22日22时22分</span> ，当然，如果忘记了也不用勉强。</p>
       </div>
     </div>
 
@@ -628,20 +646,42 @@ footer p{font-size:14px;line-height:1.7}
     <div class="reveal" style="animation-delay:.15s">
       <h2 class="g-title">重要<em>声明</em></h2>
       <div class="g-body">
-        <p>统计上有一定正确率，但我们<span class="hl">不建议</span>以此做<span class="hl">任何决策</span>。</p>
-        <p>我们不提供<span class="hl">迷信服务</span>。探究的是：符号排列组合后能否真实反映现实。</p>
-        <p>解读中难懂的词汇是包含巨量信息的符号——形式上的必须。我们去除神秘化，杜绝巴纳姆效应。不一定正确，也绝不宽泛。</p>
-      </div>
-    </div>
+        <p>虽然这在简单统计上拥有一定的正确率，但我们仍<span class="hl">不建议</span>以此做<span class="hl">任何决策</span>，你需要为自己负责。</p>
+        <p>我们不提供<span class="hl">迷信服务</span>，我们探究的是：符号经过排列组合后能否真实的反映现实。因此，六爻符号体系只是我们在权衡后的一个选择，一个实验载体。</p>
+        <p>我们会尽可能的去除神秘化元素，并在Skill中对巴纳姆效应做了禁用，这会证明，它不靠话术，错就是错。</p>
+	      </div>
+	      <h2 class="g-title" style="margin-top:20px">如何<em>做到</em></h2>
+	      <div class="g-body">
+	        <p>我们做了很多构思，请往下看 ↓</p>
+	      </div>
+	    </div>
 
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     PHILOSOPHY — 三大核心支柱
+     理念 — Deconstruction · Philosophy · Pipeline
      ════════════════════════════════════════════════════════════ -->
 <section id="c" data-od-id="philosophy">
   <div class="c-inner">
+
+    <div class="c-head">
+      <div>
+        <div class="c-label">Deconstruction</div>
+        <h2 class="c-title">将占卜<em>解构</em></h2>
+      </div>
+    </div>
+
+    <div class="mermaid reveal" style="display:flex;justify-content:center;margin-bottom:48px">
+      graph LR
+        发念-->匹配中
+        起卦-->匹配中
+        匹配中-->最优准确性
+        匹配中-->最优可能性
+        最优准确性-->匹配完成
+        最优可能性-->匹配完成
+        匹配完成-->结果反馈
+    </div>
 
     <!-- 标题区 -->
     <div class="c-head">
@@ -678,8 +718,7 @@ footer p{font-size:14px;line-height:1.7}
     </div>
 
     <!-- 训练反馈循环 -->
-    <div class="pipeline-divider"></div>
-    <div class="c-label">Pipeline</div>
+    <div class="c-label" style="margin-top:48px">Pipeline</div>
     <h2 class="c-title" style="margin-bottom:4px;">训练<em>反馈</em>循环</h2>
     <p class="pipeline-desc">从问题到答案，五次接力完成一次完整的训练闭环。</p>
     <div class="pipeline-flow reveal" style="animation-delay:.2s">
@@ -730,7 +769,7 @@ footer p{font-size:14px;line-height:1.7}
   <div class="section-inner">
     <p class="section-number">02 / 产品</p>
     <h2 class="section-title">ESI-LIUYAO 各系列</h2>
-    <p class="section-lead">点击选择版本，查看详细参数与要点</p>
+    <p class="section-lead">点击选择版本，查看详细数据与要点</p>
 
     <div class="product-selector reveal" style="animation-delay:.1s">
       <!-- 产品线 -->
@@ -793,21 +832,24 @@ var VERSIONS = {
         name:'esi-liuyao-v1.0',line:'Stone tool-V1 石器',
         tCount:50,
         stats:{acc:'69%',train:'50次'},
-        judge:'169/136/57',
+        judge:'79KB',
+        downloadUrl:'https://raw.githubusercontent.com/sunxiaochuan48/esi-liuyao/refs/heads/main/sklls/esi-liuyao-v1.0.2.md',
         anchors:[[1,85],[2,100],[3,87],[4,69],[5,69],[6,54],[7,68],[8,93],[9,90],[10,93],[11,37],[12,81],[13,94],[14,49],[15,67],[16,40],[17,74],[18,69],[19,93],[20,71],[21,80],[22,55],[23,87],[24,74],[25,71],[26,90],[27,95],[28,67],[29,63],[30,87],[31,9],[32,90],[33,23],[34,73],[35,54],[36,30],[37,89],[38,50],[39,64],[40,27],[41,76],[42,70],[43,53],[44,44],[45,80],[46,70],[47,87],[48,80],[49,76],[50,73]],
         dl:'获取当前 Skill',
-        note:'这是 <strong>v1.0</strong>——最初的版本。69% 的参考正确率远非终点，它是基准线。每一次训练、每一次反馈，都在推动它变得更好。',
-        points:['构建50次训练样本的基础卦例库','参考正确率达69%，验证框架可行性','确立实证、系统、迭代三大核心支柱','裁定引擎v1.0完成验收并稳定运行']
+        note:'这是最初的版本，69%的参考正确率，粗糙的结构与内容。它初步的表明了该项目拥有一定的可行性，在实测观察中它能够真实的反映现实情况。\n\n在杜绝巴纳姆效应与宽泛描述，并其明确行为准则后，它仍旧可以通过解读得出与现实相近的结论。尽管有的时候结论可能会出现错误，但经过分析我们发现，大部分问题实际上都是出现在解读环节的错误与偏差，以及结构或AI执行层面的问题。\n\n在拒绝宽泛描述的情况下，能够反映一定的现实情况，这是一件有意义的事情。而因为测试题数体量原因，我们无法对"反映现实"这一特质进行盖棺定论，但也无法全然的，将它否定为抛硬币游戏。这至少给了我们一个前进的理由。我们会以此为基准，不断训练发展，吸收反馈，优化结构内容。',
+        points:['新增多个时间获取方式，建立从时间到四柱的计算流程','新增三种起卦方式','新增六爻纳甲排盘功能','新增五项检查（用神上卦/旬空/月破/特殊卦型/世爻关系）','新增10种问题模式，每种都有独立用神选取和断语框架','新增规划A-E五个阶段用于解读与判断','新增审计/自评/反模式检测等功能','新增双层输出模式，对内输出完整Ai结构化信息，对外输出人话版','新增多个高级推理工具','新增多个速查表']
       },
       {
         id:'v1_1',label:'v1.1',featured:false,
         name:'esi-liuyao-v1.1',line:'Stone tool-V1 石器',
-        tCount:30,
-        stats:{acc:'—','train':'—'},
-        anchors:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,0],[17,0],[18,0],[19,0],[20,0],[21,0],[22,0],[23,0],[24,0],[25,0],[26,0],[27,0],[28,0],[29,0],[30,0]],
-        dl:'敬请期待',
+        tCount:50,
+        stats:{acc:'72.6%',train:'50次'},
+        judge:'109KB',
+        downloadUrl:'https://raw.githubusercontent.com/sunxiaochuan48/esi-liuyao/refs/heads/main/sklls/esi-liuyao-v1.1.md',
+        anchors:[[1,80],[2,70],[3,64],[4,84],[5,76],[6,56],[7,80],[8,77],[9,72],[10,92],[11,56],[12,72],[13,68],[14,64],[15,70],[16,100],[17,80],[18,80],[19,84],[20,80],[21,100],[22,72],[23,40],[24,76],[25,84],[26,68],[27,10],[28,87],[29,90],[30,70],[31,55],[32,76],[33,64],[34,92],[35,80],[36,64],[37,64],[38,76],[39,80],[40,53],[41,90],[42,84],[43,92],[44,90],[45,90],[46,56],[47,24],[48,92],[49,32],[50,75]],
+        dl:'获取当前 Skill',
         note:'<strong>v1.1</strong> 尚未推出，敬请期待。',
-        points:['无']
+        points:['重构断判定量体系，废弃固定权重+综合分模式，替换为原子问题独立计分+六亲生克传导修正','新增信号多义性裁决，月破/旬空/伏藏强制多方向解读+场景匹配，防单向过读','新增质量闸门，C→D 间插入溯因推理，拦截逻辑断层','新增信号定位，六维收窄锁定何人/何事/何状，断语绑定实体锚点','重构起卦算法，升级为熵池+XorShift32','新增完整四柱计算代码PowerShell可直接执行','新增审计5项+反模式8条，全部对齐新增流程','精简E阶段从核心裁定降为断语包装']
       },
     ]
   },
@@ -866,6 +908,13 @@ var VERSIONS = {
 };
 
 /* ── RENDER PRODUCTS ── */
+function downloadSkill(url){
+  fetch(url).then(function(r){return r.blob()}).then(function(b){
+    var a=document.createElement('a');a.href=URL.createObjectURL(b);
+    a.download=url.split('/').pop();document.body.appendChild(a);a.click();
+    document.body.removeChild(a);URL.revokeObjectURL(a.href);
+  });
+}
 (function(){
   var lineTabs = document.getElementById('lineTabs');
   var verTabs = document.getElementById('verTabs');
@@ -924,12 +973,10 @@ var VERSIONS = {
         var idx=a[0]-1;
         if(idx>=0&&idx<tCount) raw[idx]=a[1];
       });
-      var max=Math.max.apply(null,raw);var min=Math.min.apply(null,raw);
-      var rMax=Math.ceil(max/5)*5,rMin=Math.floor(min/5)*5;var rRange=rMax-rMin||5;
-      if(rRange<20){rMin=Math.max(0,rMin-5);rMax=rMin+20;rRange=20;}
-      // Y axis ticks (5 lines)
+      // Y axis: fixed 0–100, step 10
+      var rMin=0,rMax=100,rRange=100;
       var yTicks=[];
-      for(var yi=0;yi<=4;yi++){yTicks.push(rMin+Math.round(rRange*yi/4/5)*5)}
+      for(var yi=0;yi<=10;yi++){yTicks.push(yi*10)}
       // X ticks every 5
       var xStep=5,xTicks=[];
       for(var xi=0;xi<=tCount;xi+=xStep){xTicks.push(xi)}
@@ -947,7 +994,7 @@ var VERSIONS = {
       }).join('');
       var yLabels=yTicks.map(function(y){
         var yy=(pt+ry*(1-(y-rMin)/rRange)).toFixed(1);
-        return'<text x="'+(pl-5)+'" y="'+(+yy+4)+'" text-anchor="end" font-size="8">'+y+'</text>';
+        return'<text x="'+(pl-5)+'" y="'+(+yy+4)+'" text-anchor="end" font-size="8">'+y+'%</text>';
       }).join('');
       // X grid + labels
       var xLines='',xLabels='';
@@ -955,7 +1002,7 @@ var VERSIONS = {
         var xx=(pl+rx*t/tCount).toFixed(1);
         if(t>0) xLines+='<line class="cg" x1="'+xx+'" y1="'+pt+'" x2="'+xx+'" y2="'+(pt+ry)+'"/>';
         if(i%2===0||t===tCount)
-          xLabels+='<text x="'+xx+'" y="'+(pt+ry+9)+'" text-anchor="middle" font-size="7">'+t+'</text>';
+          xLabels+='<text x="'+xx+'" y="'+(pt+ry+9)+'" text-anchor="middle" font-size="7">'+t+'次</text>';
       });
       chartHtml='<div class="pp-chart-wrap">'
         +'<svg class="pp-chart" viewBox="0 0 800 150" preserveAspectRatio="xMidYMid meet">'
@@ -977,21 +1024,25 @@ var VERSIONS = {
       +'<div class="pp-stats-grid">'
       +'<div class="pp-stat"><div class="pp-stat-val">'+ver.stats.acc+'</div><div class="pp-stat-label">参考正确率</div></div>'
       +'<div class="pp-stat"><div class="pp-stat-val">'+ver.stats.train+'</div><div class="pp-stat-label">累计训练</div></div>'
-      +'<div class="pp-stat"><div class="pp-stat-val">'+(ver.judge || '—')+'</div><div class="pp-stat-label">判断点（正确/擦边/错误）</div></div>'
+      +'<div class="pp-stat"><div class="pp-stat-val">'+(ver.judge || '—')+'</div><div class="pp-stat-label">文件大小</div></div>'
       +'</div>'
       +chartHtml
-      +'<a href="'+(ver.dl === '敬请期待' ? 'javascript:void(0)' : '#')+'" class="pp-dl">'+ver.dl+'</a>'
+      +'<a href="javascript:void(0)" class="pp-dl"'+(ver.downloadUrl?' onclick="downloadSkill(\''+ver.downloadUrl+'\')"':'')+'>'+ver.dl+'</a>'
       +'</div>';
-    prodNote.innerHTML = ver.note;
+	    prodNote.innerHTML = '<div class="points-panel">'
+	      + '<div class="points-header">版本简介</div>'
+	      + '<div class="points-item" style="border-bottom:none;justify-content:center;padding:16px 32px">'
+	      + '<div class="points-text" style="color:var(--fg);text-align:center;font-size:15px;line-height:1.75">'
+	      + (ver.note||'').split('\n\n').map(function(p){return '<p style="margin-bottom:10px;line-height:1.75">'+p.replace(/\n/g,'<br>')+'</p>'}).join('')
+	      + '</div>'
+	      + '</div>'
+	      + '</div>';
     // 渲染版本要点
     var pointsHtml = '<div class="points-panel">'
       + '<div class="points-header">版本要点</div>'
       + '<div class="points-list">';
     (ver.points || ['无']).forEach(function(p,i){
-      pointsHtml += '<div class="points-item">'
-        + '<span class="points-num">'+(i+1)+'.</span>'
-        + '<span class="points-text">'+p+'</span>'
-        + '</div>';
+      pointsHtml += '<div class="points-item"><span class="points-text">'+p+'</span></div>';
     });
     pointsHtml += '</div></div>';
     document.getElementById('pointsWrap').innerHTML = pointsHtml;
@@ -1055,8 +1106,8 @@ var VERSIONS = {
     entries.forEach(function(entry){
       if(!entry.isIntersecting||done.has(entry.target)) return;
       done.add(entry.target);
-      var el=entry.target,t=parseInt(el.getAttribute('data-n'),10),s=el.getAttribute('data-s')||'',d=1400,st=null;
-      function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(t*e)+s;if(p<1)requestAnimationFrame(step)}
+      var el=entry.target,t=parseFloat(el.getAttribute('data-n')),s=el.getAttribute('data-s')||'',d=1400,st=null;
+      function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/d,1),e=1-Math.pow(1-p,3);el.textContent=(t%1? (t*e).toFixed(1) : Math.round(t*e))+s;if(p<1)requestAnimationFrame(step)}
       requestAnimationFrame(step);
     });
   },{threshold:.5});
