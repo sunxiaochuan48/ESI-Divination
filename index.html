@@ -133,14 +133,69 @@
   }
   .hero .meta-row {
     display: flex;
-    justify-content: space-between;
-    gap: var(--gap-xl);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
     margin-top: var(--gap-lg);
     padding-top: var(--gap-md);
     border-top: 1px solid var(--border);
   }
   .hero .meta-row .item { font-size: var(--fs-meta); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
   .hero .meta-row .item strong { display: block; font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; color: var(--fg); margin-bottom: 4px; letter-spacing: 0; }
+  .hero .meta-row .btn-group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap-md);
+  }
+  .hero .meta-row .skill-note {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 420px;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+  }
+  .hero .meta-row .btn-philosophy {
+    display: block;
+    padding: 6px 18px;
+    border: 1.5px solid var(--fg);
+    font-size: var(--fs-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg);
+    background: transparent;
+    transition: all 0.15s;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .hero .meta-row .btn-philosophy:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+  .hero .meta-row .btn-philosophy small {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg);
+    margin-bottom: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .hero .meta-row .btn-philosophy:hover small { color: var(--bg); }
+
+  .hero .meta-row .btn-philosophy--solid {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+  .hero .meta-row .btn-philosophy--solid:hover {
+    background: transparent;
+    color: var(--fg);
+  }
+  .hero .meta-row .btn-philosophy--solid small { color: var(--bg); }
+  .hero .meta-row .btn-philosophy--solid:hover small { color: var(--fg); }
 
   /* ---------- Philosophy ---------- */
   .phil-grid {
@@ -235,7 +290,7 @@
     line-height: 1.6;
   }
 
-  /* ---------- Products ---------- */
+  /* ---------- 成果展示卡片 ---------- */
   .product-header {
     display: flex;
     justify-content: space-between;
@@ -344,6 +399,38 @@
     margin-top: var(--gap-md);
     padding-top: var(--gap-md);
     border-top: 1px solid var(--border);
+  }
+  .product-panel .panel-content {
+    font-size: var(--fs-body);
+    color: var(--muted);
+    line-height: 1.85;
+    margin-top: var(--gap-md);
+    padding-top: var(--gap-md);
+    border-top: 1px solid var(--border);
+  }
+  .product-panel .panel-content p {
+    margin-bottom: var(--gap-sm);
+    text-indent: 2em;
+  }
+
+  .panel-download {
+    display: block;
+    width: 100%;
+    margin-top: var(--gap-md);
+    padding: 12px;
+    text-align: center;
+    font-size: var(--fs-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: 1.5px solid var(--fg);
+    color: var(--fg);
+    background: transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .panel-download:hover {
+    background: var(--fg);
+    color: var(--bg);
   }
   .product-panel .panel-features li {
     list-style: none;
@@ -457,6 +544,52 @@
     color: var(--fg);
   }
 
+  /* ---------- Statement ---------- */
+  .statement {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  .statement h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: var(--gap-lg);
+    text-align: center;
+  }
+  .statement h2 span {
+    display: block;
+    font-size: var(--fs-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: var(--gap-xs);
+  }
+  .statement .body {
+    border-top: 1px solid var(--border);
+    padding-top: var(--gap-lg);
+  }
+  .statement .body p {
+    font-size: var(--fs-body);
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: var(--gap-md);
+    text-indent: 2em;
+  }
+  .statement .body p strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .statement .body p.sig {
+    text-indent: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--fg);
+    margin-top: var(--gap-lg);
+    padding-top: var(--gap-md);
+    border-top: 1px solid var(--border);
+  }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 920px) {
     :root { --gutter: 20px; --gap-2xl: 72px; --gap-xl: 48px; --gap-lg: 28px; }
@@ -466,6 +599,7 @@
     .product-header { flex-direction: column; align-items: flex-start; }
     .donate-grid { grid-template-columns: 1fr; }
     .product-panel .panel-features { grid-template-columns: 1fr; }
+    .product-panel .panel-content { column-count: 1; }
     .hero h1 { max-width: 100%; }
     .hero .meta-row { flex-wrap: wrap; gap: var(--gap-md); }
   }
@@ -480,8 +614,9 @@
     <div class="links">
       <a href="#philosophy">哲学 / Philosophy</a>
       <a href="#goals">目标 / Goals</a>
-      <a href="#products">产品 / Products</a>
+      <a href="#products">成果 / Results</a>
       <a href="#donate">支持 / Support</a>
+      <a href="#statement">声明 / Statement</a>
     </div>
   </div>
 </nav>
@@ -494,15 +629,21 @@
       <span class="accent-line">以实证（Empirical）、系统（systematic）、迭代（iterative）为核心指导，针对术数占卜的实用性与原理进行探究的开源项目。</span>
     </h1>
     <p class="sub">
-      注意：本项目不提供任何迷信内容与服务，也并非纯粹的科学研究，而是站在客观现实观察与探究现象。
-      <br><span style="color:var(--muted)">Notice: This project does not provide any superstitious content or services, nor is it purely scientific research. It stands on the ground of objective observation and exploration of phenomena.</span>
+      注意：本项目不提供任何迷信内容与服务，也并非纯粹的科学研究，而是站在客观现实中观察与总结现象。
+      <br><span style="color:var(--muted)">Notice: This project does not provide any superstitious content or services, nor is it purely scientific research. It observes and summarizes phenomena from an objective standpoint.</span>
     </p>
     <div class="meta-row">
-      <div class="item"><strong>v3.1</strong>Latest Release</div>
-      <div class="item"><strong>64</strong>Hexagrams</div>
-      <div class="item"><strong>8</strong>Trigrams</div>
-      <div class="item"><strong>MIT</strong>License</div>
-    </div>
+      <div class="btn-group">
+        <a href="#philosophy" class="btn-philosophy">
+          <small>→ 了解项目理念</small>
+          Learn Our Philosophy
+        </a>
+        <a href="#products" class="btn-philosophy btn-philosophy--solid">
+          <small>→ 下载 Skill 体验</small>
+          Download &amp; Experience
+        </a>
+      </div>
+      <p class="skill-note">为了确保测试内容不受个人主观影响，且受限于技术。我们多采用AI Agent Skill进行解读与测试，如果你也想试一下，可以将它安装在AI Agent中进行体验。</p>
   </div>
 </section>
 
@@ -544,39 +685,39 @@
         <div class="subtitle">Project Goals</div>
         <h2>我们的目标<br>Our Mission</h2>
         <p>
-          ESI-Divination 旨在为现代卜卦实践提供一套可操作的、不依赖于特定流派的方法论框架。
-          我们不创造新范式，我们总结已经被验证过的模式。
+          在当下环境中，各类禁忌/伪论层出不穷，我们会致力于术数占卜的实用性与原理探究。
+          去除神秘化叙事，将各个环节与标准进行解构，尝试理解与阐述其中的道理，提供一个更加纯粹与客观的观点。
           <br><br>
-          ESI-Divination aims to provide a practical, school-agnostic methodology framework for modern divination practice. We don't invent new paradigms — we distill patterns that have already been proven.
+          In today's environment, taboos and pseudotheories abound. We are committed to exploring the practicality and principles of divination — stripping away mystifying narratives, deconstructing each step and standard, seeking to understand and articulate the underlying logic, and offering a purer, more objective perspective.
         </p>
       </div>
       <div class="right">
         <div class="goal-item">
           <div class="mark">G1</div>
           <div class="content">
-            <h4>可复现的占卜标准 / Reproducible Divination</h4>
-            <p>建立一套通用的起卦记录和结果复现规范，让每一次占卜都能被独立验证。</p>
+            <h4>术数占卜的实际落地 / Practical Implementation of Divination</h4>
+            <p>我们将以 AI Agent Skill 为载体，将术数占卜流程转化为可执行、可复用的标准化操作步骤。以实用性为首要目标，这也是整个项目的核心关注点。</p>
           </div>
         </div>
         <div class="goal-item">
           <div class="mark">G2</div>
           <div class="content">
-            <h4>模块化工具链 / Modular Toolchain</h4>
-            <p>提供一组可组合的轻量工具，覆盖从起卦到解卦的全链路。</p>
+            <h4>客观有效的测试框架 / Objective and Effective Testing Framework</h4>
+            <p>为此，我们设计并搭建了一套可量化、可复现的测试框架，通过客观指标评估术数占卜在测试环境中的有效性。AI Agent Skill 将作为测试执行的主体，在多元与二元测试题目中运行，得出多个参考正确率指标。</p>
           </div>
         </div>
         <div class="goal-item">
           <div class="mark">G3</div>
           <div class="content">
-            <h4>社区驱动的演化 / Community Evolution</h4>
-            <p>开放贡献、透明治理。方法论的迭代本身也遵循迭代哲学。</p>
+            <h4>反馈驱动的稳定迭代 / Feedback-Driven Stable Iteration</h4>
+            <p>测试并非终点，而是优化的起点。我们将系统性地收集每一轮测试中的误差与不足，并将其融入下一代 Skill 的改进中，形成"测试—反馈—优化"的闭环机制，推动参考正确率在迭代中持续精进。</p>
           </div>
         </div>
         <div class="goal-item">
           <div class="mark">G4</div>
           <div class="content">
-            <h4>跨领域适用 / Cross-Domain Applicability</h4>
-            <p>从玄学到哲学，从心理学到决策科学，ESI-Divination 方法论可迁移、可适配。</p>
+            <h4>理论层面的探索 / Theoretical Exploration</h4>
+            <p>在实践积累的基础上，我们也将尝试对术数体系的内在逻辑进行探究，以期形成更具启发性的理解。这些论源于对现象的观察与归纳总结。</p>
           </div>
         </div>
       </div>
@@ -584,48 +725,47 @@
   </div>
 </section>
 
-<!-- Products -->
+<!-- Results -->
 <section id="products" data-od-id="products">
   <div class="container">
     <div class="product-header">
       <div class="left">
-        <h2>产品选择</h2>
-        <div class="subtitle">Choose Your Product</div>
+        <h2>项目成果阅览→</h2>
+        <div class="subtitle">Browse Our Results</div>
       </div>
       <div class="right-tabs">
         <div class="product-tabs" id="productTabs">
-          <button class="active" data-product="framework">Divination Engine</button>
-          <button data-product="cli">I-Ching CLI</button>
-          <button data-product="studio">Divination Studio</button>
+          <button class="active" data-product="esi-liuyao-skill">六爻 Skill</button>
+          <button data-product="theory">理论探究</button>
         </div>
         <div class="version-tabs" id="versionTabs">
-          <button class="active" data-version="stable">Stable</button>
-          <button data-version="beta">Beta</button>
+          <!-- generated by JS -->
         </div>
       </div>
 
     <div class="product-panel" id="productPanel">
       <div class="panel-title" id="panelTitle">ESI Framework</div>
       <div class="panel-meta">
-        <span id="panelVersion">v2.4.0 (Stable)</span>
-        <span id="panelLicense">MIT License</span>
+        <span id="panelVersion">v1</span>
+        <span id="panelAccuracy">参考正确率 82%</span>
         <span id="panelSize">128 KB</span>
       </div>
       <p class="panel-desc" id="panelDesc">
-        ESI Framework 是一个轻量级、模块化的方法论运行时库。它提供实验追踪、结构化文档生成和迭代循环管理等功能，
-        帮助团队在复杂的项目中保持实证驱动的工作流。基于插件架构，可无缝集成到现有技术栈。
+        ESI 六爻 Skill 是基于 ESI-Divination 方法论打造的六爻占卜 AI Agent Skill。
+        提供完整的起卦、排盘、解卦流程，内置多种解卦模式与验证机制。
       </p>
       <ul class="panel-features" id="panelFeatures">
-        <li>实验追踪与版本化管理 / Experiment tracking with versioning</li>
-        <li>自动化迭代报告生成 / Automated iteration reports</li>
-        <li>插件化架构，支持自定义扩展示 / Plugin architecture</li>
-        <li>与主流 CI/CD 平台兼容 / CI/CD platform integration</li>
+        <li>标准化的起卦与排盘流程 / Standardized hexagram casting &amp; arrangement</li>
+        <li>多维度解卦信号分析 / Multi-dimensional signal analysis</li>
+        <li>结构化底稿自动生成 / Automated structured draft generation</li>
+        <li>审计与迭代反馈机制 / Audit &amp; iterative feedback loop</li>
       </ul>
+      <div class="panel-content" id="panelContent" style="display:none;"></div>
     </div>
+    <button class="panel-download" id="downloadBtn">⬇ Download</button>
   </div>
 </section>
 
-<!-- Donate -->
 <section id="donate" data-od-id="donate">
   <div class="container">
     <div class="donate-grid">
@@ -633,14 +773,38 @@
         <div class="subtitle">Support ESI-Divination</div>
         <h2>打赏支持<br>Support the Project</h2>
         <p>
-          ESI-Divination 是一个开源项目，持续维护需要社区的支撑。
-          你的每一份支持都将直接用于文档完善、社区运营和基础设施维护。
+          如果您看好本项目的潜力，或者觉得它对您有帮助，欢迎支持我们。但这只是一点支持，不涉及任何服务与区别对待，将用于项目的长期发展开销等。
           <br><br>
-          ESI-Divination is open-source and community-driven. Your support goes directly to documentation, community operations, and infrastructure.
+          If you see potential in this project or find it helpful, you're welcome to support us. This is merely a token of support — it involves no services or preferential treatment, and will be used toward the project's long-term development costs.
         </p>
       </div>
       <div class="right" style="height:100%; padding:0; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#f0f0f0;">
         <img src="https://raw.githubusercontent.com/sunxiaochuan48/esi-liuyao/main/skm.png" alt="ESI" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statement -->
+<section id="statement" data-od-id="statement">
+  <div class="container">
+    <div class="statement">
+      <h2>
+        声明
+        <span>Statement</span>
+      </h2>
+      <div class="body">
+        <p>本项目是以符号排列组合为实验载体的结构化分析框架，旨在探索符号规则与现实信息的映射关系，同时探究其原理与机制，不涉及神秘主义或迷信服务等。六爻等仅为实验模型。</p>
+
+        <p>所有术数占卜落地内容均为基于特定规则与参数的推理结果，不代表预测、事实陈述或必然结论，不具备现实层面的参考或证明效力。测试参考正确率仅反映特定样本与条件下的统计表现，不代表现实场景中拥有同等效力，不构成对未来的任何保证。</p>
+
+        <p>输出内容不构成任何建议，不宜作为投资、财务、医疗、法律等重大事项的决策依据。使用风险及损失由使用者自行承担。项目作者及贡献者不对任何使用或无法使用所引发的直接、间接、附带、特殊或后果性损失承担责任。</p>
+
+        <p>项目内容允许用于合法合规的商业用途。但任何将本项目用于违法或违反道德之行为所引发的一切后果与法律责任，均与项目作者无关。</p>
+
+        <p>项目设定内容部分用于AI行为约束，不代表个人立场。本人坚决反对宿命论及消极人生观，秉持客观、积极、良好的生活观念，是健康生活的根本。</p>
+
+        <p class="sig">— ESI-Divination</p>
       </div>
     </div>
   </div>
@@ -651,95 +815,123 @@
   <div class="inner">
     <span class="foot-logo">ESI-Divination</span>
     <span>© 2026 ESI-Divination · 开源开放 / Open &amp; Free</span>
-    <span>Built with empirical rigor</span>
+    <span>Email：sunxiaochuan48@163.com</span>
   </div>
 </footer>
 
 <script>
-  // Product selection logic
+  // 成果展示 · 母按钮 & 子按钮 切换逻辑
+  const versionList = {
+    'esi-liuyao-skill': ['v1', 'v2', 'v2.1-beta'],
+    'theory':           ['foundation', 'liuyao']
+  };
+
   const products = {
-    framework: {
-      title: 'Divination Engine',
-      version: 'v3.1.0',
-      license: 'MIT License',
-      size: '256 KB',
-      desc: 'Divination Engine 是一个轻量级、模块化的卜卦运行时库。它提供卦象生成、结构化排盘和迭代解卦等功能，帮助占卜者在复杂的实践中保持实证驱动的工作流。基于插件架构，可无缝集成到各类占卜工具。',
-      features: [
-        '64 卦象生成与演变追踪 / 64 Hexagrams with evolution tracking',
-        '自动化解卦报告生成 / Automated divination reports',
-        '插件化架构，支持自定义解卦规则 / Plugin architecture for custom rules',
-        '与主流玄学平台兼容 / Compatible with major metaphysical platforms'
-      ]
+    'esi-liuyao-skill': {
+      title: 'ESI 六爻 Skill',
+      versions: {
+        v1: { accuracy: '参考正确率 82%', size: '128 KB', desc: 'ESI 六爻 Skill v1 是六爻占卜 AI Agent Skill 的初始稳定版本。提供标准化的起卦、排盘、解卦全流程，建立基础的方法论框架与验证机制。', features: ['标准化的起卦与排盘流程 / Standardized casting &amp; arrangement', '基础解卦信号系统 / Basic divination signal system', '结构化底稿自动生成 / Automated structured drafting', '审计与迭代反馈机制 / Audit &amp; iterative feedback'] },
+        v2: { accuracy: '参考正确率 89%', size: '256 KB', desc: 'ESI 六爻 Skill v2 在 v1 基础上大幅扩充了解卦信号层级系统与模式库。引入更精细的动爻分析、应期判断与多维度交叉验证，显著提升了解读深度与一致性。', features: ['增强信号层级系统 / Enhanced signal hierarchy', '精细化动爻与应期分析 / Refined moving-line &amp; timing analysis', '多维度交叉验证机制 / Multi-dimensional cross-validation', '扩展模式库与案例参考 / Extended pattern library &amp; references'] },
+        'v2.1-beta': { accuracy: '参考正确率 91%', size: '280 KB', desc: 'ESI 六爻 Skill v2.1-beta 是下一个迭代的预览版。在 v2 基础上优化了原子裁定流程，新增了更细粒度的卦象拆解规则与结果校准机制，测试阶段持续收集反馈中。', features: ['原子裁定流程优化 / Optimized atomic adjudication', '细粒度卦象拆解规则 / Fine-grained hexagram decomposition', '结果校准与一致性检查 / Result calibration &amp; consistency check', '实验性功能：动态应期推算 / Experimental: dynamic timing'] }
+      }
     },
-    cli: {
-      title: 'I-Ching CLI',
-      version: 'v2.2.1',
-      license: 'MIT License',
-      size: '3.8 MB',
-      desc: 'I-Ching CLI 是 ESI-Divination 方法论的命令行工具。通过简单的命令即可起卦、排盘、生成结构化解卦报告。支持硬币法、蓍草法、随机数法三种起卦方式，零配置上手。',
-      features: [
-        '三种起卦方式：硬币 / 蓍草 / 随机数 / Three casting methods: coin, yarrow, RNG',
-        '卦象可视化与变爻解析 / Hexagram visualization with changing lines',
-        '迭代解卦历史记录 / Iterative divination history',
-        '多语言输出：中文 / 英文 / Cross-platform native'
-      ]
-    },
-    studio: {
-      title: 'Divination Studio',
-      version: 'v0.9.0',
-      license: 'MIT License (Preview)',
-      size: '—',
-      desc: 'Divination Studio 是 ESI-Divination 生态的图形化集成环境。可视化排盘界面、卦象交互面板、解卦协作空间。目前处于公开预览阶段，欢迎参与测试与反馈。',
-      features: [
-        '可视化排盘流程设计器 / Visual hexagram designer',
-        '实时卦象交互仪表盘 / Real-time hexagram dashboard',
-        '解卦协作与评论 / Divination collaboration with comments',
-        '数据导出：CSV / JSON / SVG 卦图 / Export hexagram charts in multiple formats'
-      ]
+    'theory': {
+      title: '理论探究成果',
+      versions: {
+        foundation: {
+          title: '术数占卜的原理探究',
+          date: '2026-05-18',
+          accuracy: '约 5800 字',
+          content: '<p>术数占卜作为一种古老的认知实践，长久以来被神秘化的外衣所包裹。当我们剥去这层外衣，会发现其背后是一套高度符号化、结构化的模式识别系统。这套系统的核心不在于"预测未来"，而在于通过特定的符号框架，对当下情境进行重新编码与解码，从而激发出新的认知角度。</p><p>从认识论的角度看，占卜的本质是一种"投射-反馈"机制。求卜者将自己的疑问投射到卦象或牌面之上，而解读者则通过既定的符号规则，将随机生成的符号组合转化为有意义的叙事。这个过程看似玄妙，实则与人类日常的隐喻思维和模式识别能力一脉相承。</p><p>荣格曾提出"共时性"原则来阐述占卜的运作逻辑——有意义的巧合，其背后并非因果关系，而是一种"意义层面的共鸣"。无论我们是否接受这一解释框架，不能否认的是，占卜作为一种思维工具，确实能够帮助人们在面对不确定性时，提供一个结构化的思考路径。</p><p>本系列探究的目的，正是要将这些被神秘化叙事掩盖的底层逻辑一一揭示出来。我们不将其奉为玄学真理，也不将其贬为纯粹的迷信，而是将其视为一种值得观察、分析和理解的人类认知现象。</p>'
+        },
+        liuyao: {
+          title: '六爻信号层级系统解析',
+          date: '2026-04-22',
+          accuracy: '约 7200 字',
+          content: '<p>六爻占卜之所以能够在众多术数门类中占据重要地位，其核心优势在于其高度结构化的信号层级系统。从起卦到解卦，每一个环节都遵循着清晰的逻辑链条，这为系统化分析提供了坚实的基础。</p><p>第一层级是卦象本身。六十四卦每一卦都有其卦辞和卦义，这是最宏观的信号。但真正精微的解卦，绝不能止步于卦辞的背诵，而必须深入到爻的层面。每一爻的阴阳属性、所处位置、是否当位，构成了第二层级的信号系统。</p><p>第三层级是爻之间的关系。生克制化、冲合刑害，这些五行关系在六爻体系中构成了动态的信号网络。动爻的出现更是为整个卦象注入了时间维度——它指向变化的方向与程度。不动之爻代表相对稳定的状态，而动爻则揭示出正在发生或即将发生的变化。</p><p>应期判断则是信号系统的最顶层应用。通过对动爻、日月建、爻位等多重信号的交叉验证，推算出事件可能发生的时间窗口。这一过程并非简单的公式套用，而是一种对多重信号进行加权综合判断的复杂认知活动。</p><p>理解这套信号层级系统，是掌握六爻方法论的关键所在。它不仅让解卦过程变得可追溯、可验证，也为后续的迭代优化提供了结构化的反馈基础。</p>'
+        }
+      }
     }
   };
 
-  function getVersionSuffix(version) {
-    return version === 'beta' ? ' (Beta)' : ' (Stable)';
+  function renderVersionTabs(productKey) {
+    const container = document.getElementById('versionTabs');
+    const versions = versionList[productKey];
+    // 理论探究成果的子按钮显示文章标题
+    const labelMap = {
+      theory: {
+        foundation: '术数占卜的原理探究',
+        liuyao: '六爻信号层级系统解析'
+      }
+    };
+    const labels = labelMap[productKey] || {};
+    container.innerHTML = versions.map((v, i) =>
+      `<button class="${i === 0 ? 'active' : ''}" data-version="${v}">${labels[v] || v.toUpperCase()}</button>`
+    ).join('');
+    // re-bind click events for version tabs
+    container.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updatePanel();
+      });
+    });
   }
 
   function updatePanel() {
     const activeProduct = document.querySelector('#productTabs .active');
     const activeVersion = document.querySelector('#versionTabs .active');
-    const product = activeProduct ? activeProduct.dataset.product : 'framework';
-    const version = activeVersion ? activeVersion.dataset.version : 'stable';
+    const product = activeProduct ? activeProduct.dataset.product : 'esi-liuyao-skill';
+    const versionKey = activeVersion ? activeVersion.dataset.version : versionList[product][0];
     const data = products[product];
+    const versionData = data.versions[versionKey];
 
-    document.getElementById('panelTitle').textContent = data.title;
-    document.getElementById('panelVersion').textContent = data.version + getVersionSuffix(version);
-    document.getElementById('panelLicense').textContent = data.license;
-    document.getElementById('panelSize').textContent = data.size;
-    document.getElementById('panelDesc').textContent = data.desc;
+    // 理论探究成果展示文章，其他展示 Skill 版本
+    if (product === 'theory') {
+      document.getElementById('panelTitle').textContent = versionData.title;
+      document.getElementById('panelVersion').textContent = versionData.date;
+      document.getElementById('panelSize').style.display = 'none';
+      document.getElementById('panelDesc').style.display = 'none';
+      document.getElementById('panelFeatures').style.display = 'none';
+      document.getElementById('panelContent').style.display = 'block';
+      document.getElementById('panelContent').innerHTML = versionData.content;
+    } else {
+      document.getElementById('panelTitle').textContent = product.replace('-skill', '') + '-' + versionKey;
+      document.getElementById('panelVersion').textContent = versionKey.toUpperCase();
+      document.getElementById('panelSize').style.display = '';
+      document.getElementById('panelDesc').style.display = '';
+      document.getElementById('panelFeatures').style.display = '';
+      document.getElementById('panelContent').style.display = 'none';
+      document.getElementById('panelDesc').textContent = versionData.desc;
+    }
+    document.getElementById('panelAccuracy').textContent = versionData.accuracy;
+    if (product !== 'theory') {
+      document.getElementById('panelSize').textContent = versionData.size;
+      document.getElementById('panelDesc').textContent = versionData.desc;
 
-    const featuresList = document.getElementById('panelFeatures');
-    featuresList.innerHTML = '';
-    data.features.forEach(f => {
-      const li = document.createElement('li');
-      li.textContent = f;
-      featuresList.appendChild(li);
-    });
+      const featuresList = document.getElementById('panelFeatures');
+      featuresList.innerHTML = '';
+      versionData.features.forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        featuresList.appendChild(li);
+      });
+    }
   }
 
+  // 母按钮切换
   document.querySelectorAll('#productTabs button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#productTabs button').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      renderVersionTabs(btn.dataset.product);
       updatePanel();
     });
   });
 
-  document.querySelectorAll('#versionTabs button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#versionTabs button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      updatePanel();
-    });
-  });
+  // 初始化：渲染子按钮并更新面板
+  renderVersionTabs('esi-liuyao-skill');
+  updatePanel();
 </script>
 
 </body>
