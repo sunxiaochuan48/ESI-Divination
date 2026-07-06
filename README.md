@@ -4,8 +4,6 @@
 
 探究术数占卜的实用性与原理
 
-以实证（Empirical）、系统（Systematic）、迭代（Iterative）为核心指导，针对术数占卜的实用性与原理进行探究的开源项目。
-
 [![GitHub Stars](https://img.shields.io/github/stars/sunxiaochuan48/esi-liuyao)](https://github.com/sunxiaochuan48/esi-liuyao)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](LICENSE)
 
