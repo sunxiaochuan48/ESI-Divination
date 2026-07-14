@@ -111,6 +111,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   .hero h1 {
     font-family: var(--font-display);
@@ -138,7 +140,7 @@
   .hero .meta-row {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--gap-sm);
     margin-top: var(--gap-lg);
     padding-top: var(--gap-md);
@@ -150,18 +152,22 @@
     display: flex;
     flex-direction: row;
     gap: var(--gap-md);
+    justify-content: center;
   }
   .hero .meta-row .skill-note {
     font-size: 11px;
     color: var(--muted);
     line-height: 1.6;
-    max-width: 420px;
+    max-width: 480px;
     text-transform: none;
     letter-spacing: normal;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
   }
   .hero .meta-row .btn-philosophy {
-    display: block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
     padding: 6px 18px;
     border: 1.5px solid var(--fg);
     font-size: var(--fs-meta);
@@ -170,8 +176,9 @@
     color: var(--fg);
     background: transparent;
     transition: all 0.15s;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
+	    border-radius: 36px;
   }
   .hero .meta-row .btn-philosophy:hover {
     background: var(--fg);
@@ -209,9 +216,10 @@
   }
   .phil-card {
     padding: var(--gap-lg) var(--gap-md);
-    border: 1px solid var(--border);
-    background: var(--surface);
+    border: 1.5px solid var(--border);
+    background: var(--bg);
     position: relative;
+    border-radius: 36px;
   }
   .phil-card .num {
     font-family: var(--font-mono);
@@ -297,17 +305,17 @@
   /* ---------- 成果展示卡片 ---------- */
   .product-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: var(--gap-lg);
-    flex-wrap: wrap;
-    gap: var(--gap-md);
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0;
   }
   .product-header .right-tabs {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: var(--gap-xs);
+    margin-top: var(--gap-md);
   }
   .product-header .left h2 {
     font-family: var(--font-display);
@@ -335,6 +343,7 @@
     border: 1px solid var(--border);
     color: var(--muted);
     transition: all 0.15s;
+    border-radius: 36px;
   }
   .product-tabs button:hover { border-color: var(--fg); color: var(--fg); }
   .product-tabs button.active {
@@ -345,7 +354,7 @@
 
   .version-tabs {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: var(--gap-xs);
   }
   .version-tabs button {
@@ -355,26 +364,31 @@
     border: 1px solid var(--border);
     color: var(--muted);
     transition: all 0.15s;
+    border-radius: 36px;
   }
   .version-tabs button:hover { border-color: var(--fg); color: var(--fg); }
   .version-tabs button.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
   .product-panel {
-    margin-top: var(--gap-lg);
-    border: 1px solid var(--border);
+    margin-top: var(--gap-md);
+    border: 1.5px solid var(--border);
     padding: var(--gap-lg);
-    background: var(--surface);
+    background: var(--bg);
     min-height: 200px;
     width: 100%;
+    text-align: left;
+    border-radius: 36px;
   }
   .product-panel .panel-title {
     font-family: var(--font-display);
     font-size: 22px;
     font-weight: 600;
     margin-bottom: var(--gap-sm);
+    text-align: center;
   }
   .product-panel .panel-meta {
     display: flex;
+    justify-content: center;
     gap: var(--gap-md);
     flex-wrap: wrap;
     margin-bottom: var(--gap-md);
@@ -429,6 +443,7 @@
     background: transparent;
     transition: all 0.15s;
     cursor: pointer;
+    border-radius: 36px;
   }
   .panel-download:hover {
     background: var(--fg);
@@ -476,6 +491,7 @@
     border: 1px solid var(--border);
     padding: var(--gap-lg);
     background: var(--surface);
+    border-radius: 36px;
   }
   .donate-grid .right h3 {
     font-family: var(--font-display);
@@ -519,6 +535,7 @@
     border: 1px solid var(--fg);
     color: var(--fg);
     transition: all 0.15s;
+    border-radius: 36px;
   }
   .donate-btn:hover { background: var(--fg); color: var(--bg); }
 
@@ -599,8 +616,8 @@
     nav .links { display: none; }
     .phil-grid { grid-template-columns: 1fr; }
     .goals { grid-template-columns: 1fr; }
-    .product-header { flex-direction: column; align-items: flex-start; }
-    .product-header .right-tabs { align-items: flex-start; width: 100%; }
+    .product-header { align-items: center; }
+    .product-header .right-tabs { align-items: center; width: 100%; }
     .product-tabs, .version-tabs { flex-wrap: wrap; }
     .donate-grid { grid-template-columns: 1fr; }
     .product-panel { padding: var(--gap-md); }
@@ -638,12 +655,12 @@
 <section class="hero" data-od-id="hero">
   <div class="container">
     <h1>
-      ESI-Divination<br>探究术数占卜的实用性与原理
-      <span class="accent-line">以实证（Empirical）、系统（systematic）、迭代（iterative）为核心指导，针对术数占卜的实用性与原理进行探究的开源项目。</span>
+      ESI-Divination<br>构建稳定的术数占卜全流程系统
+      <span class="accent-line">以实证（Empirical）、系统（Systematic）、迭代（Iterative）为核心指导，将术数占卜拉下"神坛"走向落地的开源项目。</span>
     </h1>
     <p class="sub">
-      注意：本项目不提供任何迷信内容与服务，也并非纯粹的科学研究，而是站在客观现实中观察与总结现象。
-      <br><span style="color:var(--muted)">Notice: This project does not provide any superstitious content or services, nor is it purely scientific research. It observes and summarizes phenomena from an objective standpoint.</span>
+      注意：本项目不提供任何迷信内容与服务，也并非纯粹的科学研究，而是借助AI来观察与总结客观现象，以实现稳定的术数占卜全流程系统为发展主道路。
+      <br><span style="color:var(--muted)">Notice: This project does not provide any superstitious content or services, nor is it purely scientific research. It leverages AI to observe and summarize objective phenomena, with the primary path of developing a stable, full-process divination system.</span>
     </p>
     <div class="meta-row">
       <div class="btn-group">
@@ -663,10 +680,10 @@
 <!-- Philosophy -->
 <section id="philosophy" data-od-id="philosophy">
   <div class="container">
-    <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);font-weight:500;margin-bottom:var(--gap-lg);">
-      三大核心哲学
-      <span style="display:block;font-size:var(--fs-meta);text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-top:var(--gap-xs);">Three Core Philosophies</span>
-    </h2>
+    <h2 style="font-family:var(--font-display);font-size:var(--fs-h2);font-weight:500;margin-bottom:var(--gap-lg);text-align:center;">
+	      三大核心哲学
+	      <span style="display:block;font-size:var(--fs-meta);text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-top:var(--gap-xs);">Three Core Philosophies</span>
+	    </h2>
     <div class="phil-grid">
       <div class="phil-card">
         <div class="num">01</div>
@@ -743,7 +760,7 @@
   <div class="container">
     <div class="product-header">
       <div class="left">
-        <h2>项目成果阅览→</h2>
+        <h2>项目成果阅览</h2>
         <div class="subtitle">Browse Our Results</div>
       </div>
       <div class="right-tabs">
@@ -777,6 +794,15 @@
       <div class="panel-content" id="panelContent" style="display:none;"></div>
     </div>
     <button class="panel-download" id="downloadBtn">⬇ Download</button>
+  </div>
+  <p style="max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter);font-size:11px;color:var(--muted);line-height:1.8;margin-top:4px;text-align:center;">
+    网页及资源皆部署于 GitHub Pages，国内用户点击下载时可能延迟；若无反应，请访问
+    <a href="https://github.com/sunxiaochuan48/ESI-Divination" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:var(--fg);text-decoration:underline;font-weight:500;">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      sunxiaochuan48/ESI-Divination
+    </a>
+    下载。
+  </p>
   </div>
 </section>
 
@@ -818,10 +844,10 @@
 输出内容不构成任何形式的建议，不宜作为投资、财务、医疗、法律等重大事项的决策依据。使用者应自行判断并承担因使用或无法使用本内容所引发的所有风险及损失。项目作者及贡献者对此不承担任何直接、间接、附带、特殊或后果性责任。</p>
 
         <p><strong>四、法律责任与伦理约束</strong><br>
-项目内容允许合法合规的商业用途，但任何将其用于违法或违背道德目的之行为，所引发的一切后果与法律责任，均由行为人自行承担，与项目作者无关。</p>
+该项目内容，允许他人进行二次创作，与合法合规的商业用途。但任何将其用于违法或违背道德的行为，都是我们所反对的。由其所引发的一切后果与法律责任，均由行为人或团体自行承担，与项目作者无关。</p>
 
-        <p><strong>五、基本价值观立场</strong><br>
-项目设定中用于约束AI行为的部分内容，仅代表技术实现需要，不代表个人主观立场。本人始终反对宿命论与消极人生观，坚信客观、积极、良好的生活观念是健康生活的根本，也愿以此与使用者共勉。</p>
+	        <p><strong>五、基本价值观立场</strong><br>
+	项目设定中用于约束AI行为的部分内容，仅代表技术实现需要，不代表个人主观立场。本人始终反对宿命论与消极人生观，坚信客观、积极、良好的生活观念是健康生活的根本。若您使用本技能，即视为已充分阅读、理解并完全接受项目声明的全部条款。若尚未阅读，请先行查阅该文档或向AI询问内容详情。一经继续使用，所有后果与风险均由您本人自行承担。</p>
 
         <p class="sig">— ESI-Divination</p>
       </div>
@@ -860,6 +886,21 @@
       } catch (e) {
         console.error('下载失败', e);
       }
+    } else if (product === 'stats' && version === '1') {
+      try {
+        const res = await fetch('https://raw.githubusercontent.com/sunxiaochuan48/ESI-Divination/refs/heads/main/test%20statistics/1.md');
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '1.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        console.error('下载失败', e);
+      }
     }
   });
 
@@ -875,7 +916,7 @@
     'esi-liuyao-skill': {
       title: 'ESI 六爻 Skill',
       versions: {
-        'v1.0.2': { accuracy: '参考正确率 69%', size: '128 KB', desc: '这是六爻skill的最初版本，69%的参考正确率，粗糙的结构与内容。但它初步的表明了该项目拥有一定的可行性，在实测观察中它能够真实的反映现实情况。在杜绝巴纳姆效应并明确准则后，它仍能通过解读得出贴近现实的结论。尽管结论偶有错误，但就分析来看，多数问题源于解读偏差及结构或执行层面的缺陷。这本身是有意义的。 虽测试体量一般，但也无法将其简单否定为抛硬币游戏。', features: ['新增多个时间获取方式，建立从时间到四柱的计算流程', '新增三种起卦方式', '新增六爻纳甲排盘功能', '新增五项检查（用神上卦/旬空/月破/特殊卦型/世爻关系）', '新增10种问题模式，每种都有独立用神选取和断语框架', '新增规划A-E五个阶段用于解读与判断', '新增审计/自评/反模式检测等功能', '新增双层输出模式，对内输出完整Ai结构化信息，对外输出人话版', '新增多个高级推理工具', '新增多个速查表'] }
+        'v1.0.2': { accuracy: '69.4%', size: '78 KB', desc: '这是六爻skill的最初版本，69%的参考正确率，粗糙的结构与内容。但它初步的表明了该项目拥有一定的可行性，在测试观察中它能够较为真实的反映答案情况。尽管结论偶有错误，但就分析来看，多数问题源于解读偏差及结构或执行层面的缺陷，或许可以通过优化进行提升。', features: ['新增多个时间获取方式，建立从时间到四柱的计算流程', '新增三种起卦方式', '新增六爻纳甲排盘功能', '新增五项检查（用神上卦/旬空/月破/特殊卦型/世爻关系）', '新增10种问题模式，每种都有独立用神选取和断语框架', '新增规划A-E五个阶段用于解读与判断', '新增审计/自评/反模式检测等功能', '新增双层输出模式，对内输出完整Ai结构化信息，对外输出人话版', '新增多个高级推理工具', '新增多个速查表'] }
       }
     },
     'stats': {
@@ -924,7 +965,7 @@
     const ch_chart = ch - cp.top - cp.bottom;
 
     // Background
-    ctx.fillStyle = '#f8f8f8';
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, cw, ch);
 
     // Grid lines (5 horizontal)
@@ -1010,21 +1051,21 @@
       document.getElementById('panelDesc').style.display = 'none';
       document.getElementById('panelFeatures').style.display = 'none';
       document.getElementById('panelContent').style.display = 'block';
-      document.getElementById('panelContent').innerHTML = '<canvas id="accuracyChart" style="width:80%;height:220px;display:block;margin:0 auto;"></canvas>';
+	      document.getElementById('panelContent').innerHTML = '<canvas id="accuracyChart" style="width:80%;height:220px;display:block;margin:0 auto;"></canvas>';
       setTimeout(() => {
         const canvas = document.getElementById('accuracyChart');
         if (canvas) drawChart(canvas, ACCURACY_DATA);
       }, 50);
     } else {
       document.getElementById('panelTitle').textContent = product.replace('-skill', '') + '-' + versionKey;
-      document.getElementById('panelVersion').textContent = versionKey;
-      document.getElementById('panelSize').style.display = '';
-      document.getElementById('panelSubject').style.display = 'none';
-      document.getElementById('panelDesc').style.display = '';
-      document.getElementById('panelFeatures').style.display = '';
-      document.getElementById('panelContent').style.display = 'none';
-      document.getElementById('panelAccuracy').textContent = versionData.accuracy;
-      document.getElementById('panelSize').textContent = versionData.size;
+	      document.getElementById('panelVersion').textContent = '版本号：' + versionKey;
+	      document.getElementById('panelSize').style.display = '';
+	      document.getElementById('panelSubject').style.display = 'none';
+	      document.getElementById('panelDesc').style.display = '';
+	      document.getElementById('panelFeatures').style.display = '';
+	      document.getElementById('panelContent').style.display = 'none';
+	      document.getElementById('panelAccuracy').textContent = '参考正确率：' + versionData.accuracy;
+	      document.getElementById('panelSize').textContent = '大小：' + versionData.size;
       document.getElementById('panelDesc').textContent = versionData.desc;
 
       const featuresList = document.getElementById('panelFeatures');
